@@ -30,5 +30,14 @@ namespace Capstone.Models
         {
             return new ApplicationDbContext();
         }
+
+
+
+        public DbSet<Photographer> Photographers { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+
+
+
     }
 }

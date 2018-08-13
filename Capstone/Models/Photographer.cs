@@ -37,7 +37,7 @@ namespace Capstone.Models
 
         [ForeignKey("Appointment")]
         public int? AppointmentId { get; set; }
-        public Appointment appointment { get; set; }
+        public Appointment Appointment { get; set; }
 
         [ForeignKey("User")]
         public string UserId { get; set; }
