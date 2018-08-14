@@ -57,6 +57,19 @@ namespace Capstone.Controllers
                 return View(photographerList);
             }
 
+
+            List<string> photoList = new List<string>();
+        
+            foreach (var p in photographerList)
+            {
+                string photographerAddress = p.Address + "," + p.City + "," + p.State + "," + p.Zipcode.ToString();
+                photoList.Add(photographerAddress);
+
+            }
+
+            photoList.ToArray();
+            
+
             return View(photographerList.ToList());
         }
     
