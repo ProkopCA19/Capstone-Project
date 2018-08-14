@@ -20,7 +20,7 @@ namespace Capstone.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string Zipcode { get; set; }
+        public int Zipcode { get; set; }
         [Display(Name = "Price Tier 1: $50-100")]
         public bool PriceRange1 { get; set; }
         [Display(Name = "Price Tier 2: $100-200")]

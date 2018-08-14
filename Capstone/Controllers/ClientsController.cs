@@ -1,4 +1,5 @@
 ﻿using Capstone.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -45,10 +46,11 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Value,Name")] Client client)
+        public ActionResult Create([Bind(Include = "Id,UserId,FirstName,LastName,Email,Address,City,State,Zipcode,PriceRange1,PriceRange2,PriceRange3,PriceRange4,AppointmentId")] Client client)
         {
             if (ModelState.IsValid)
             {
+                client.UserId = User.Identity.GetUserId();
                 db.Clients.Add(client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -77,7 +79,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Value,Name")] Client client)
+        public ActionResult Edit([Bind(Include = "Id,UserId,FirstName,LastName,Email,Address,City,State,Zipcode,PriceRange1,PriceRange2,PriceRange3,PriceRange4,AppointmentId")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -123,5 +125,4 @@ namespace Capstone.Controllers
             base.Dispose(disposing);
         }
     }
-}
 }

@@ -21,37 +21,77 @@ namespace Capstone.Controllers
         }
 
 
-        public ActionResult FilterPhotographers()
+
+        public ActionResult FilteredPhotographers(bool searchBy, string searchString)
         {
-            var userId = User.Identity.GetUserId();
-            var client = db.Clients.Where(c => c.UserId == userId).FirstOrDefault();
+            Client client = new Client();
 
-            if(client.PriceRange1 == true)
+            var photographerList = from s in db.Photographers
+                               select s;
+
+            string currentUserId = User.Identity.GetUserId();
+            var thisClient = db.Clients.Include(c=>c.Appointment).Include(q=>q.User).Where(c =>c.UserId == currentUserId).FirstOrDefault();
+            int theZipCode = thisClient.Zipcode;
+            //photographerList = photographerList.Where(s => s.Zipcode == theZipCode);
+
+            if (searchBy == true)
             {
-                var photographerList = db.Photographers.Where(p => p.PriceRange1 == true);
+                return View(db.Photographers.Where(p => p.PriceRange1 == searchBy).ToList());
+            }
+            else if (searchBy == true)
+            {
+                return View(db.Photographers.Where(p => p.PriceRange2 == searchBy).ToList());
+            }
+            else if (searchBy == true)
+            {
+                return View(db.Photographers.Where(p => p.PriceRange3 == searchBy).ToList());
+            }
+            else if (searchBy == true)
+            {
+                return View(db.Photographers.Where(p => p.PriceRange4 == searchBy).ToList());
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                photographerList = photographerList.Where(s => s.Zipcode.ToString().Contains(searchString));
                 return View(photographerList);
             }
-            else if(client.PriceRange2 == true)
-            {
-                var photographerList = db.Photographers.Where(p => p.PriceRange2 == true);
-                return View(photographerList);
-            }
-            else if (client.PriceRange4 == true)
-            {
-                var photographerList = db.Photographers.Where(p => p.PriceRange4 == true);
-                return View(photographerList);
-            }
-            else
-            {
-                return View();
-            }
 
-
-
+            return View(photographerList.ToList());
         }
+    
+
+    //public ActionResult FilterPhotographers()
+    //{
+    //    var userId = User.Identity.GetUserId();
+    //    var client = db.Clients.Where(c => c.UserId == userId).FirstOrDefault();
+
+    //    if(client.PriceRange1 == true)
+    //    {
+    //        var photographerList = db.Photographers.Where(p => p.PriceRange1 == true);
+    //        return View(photographerList);
+    //    }
+    //    else if(client.PriceRange2 == true)
+    //    {
+    //        var photographerList = db.Photographers.Where(p => p.PriceRange2 == true);
+    //        return View(photographerList);
+    //    }
+    //    else if (client.PriceRange4 == true)
+    //    {
+    //        var photographerList = db.Photographers.Where(p => p.PriceRange4 == true);
+    //        return View(photographerList);
+    //    }
+    //    else
+    //    {
+    //        return View();
+    //    }
 
 
-        public ActionResult Details(int? id)
+
+    //}
+
+
+    public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -68,7 +108,10 @@ namespace Capstone.Controllers
         // GET: Coupons/Create
         public ActionResult Create()
         {
+
+            ViewBag.AppointmentId = new SelectList(db.Appointments, "Id", "Id");
             return View();
+            
         }
 
         // POST: Coupons/Create
@@ -76,15 +119,17 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Value,Name")] Photographer photographer)
+        public ActionResult Create([Bind(Include = "Id,UserId,FirstName,LastName,Email,Address,City,State,Zipcode,PriceRange1,PriceRange2,PriceRange3,PriceRange4,AppointmentId")] Photographer photographer)
         {
             if (ModelState.IsValid)
             {
+                photographer.UserId = User.Identity.GetUserId();
                 db.Photographers.Add(photographer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.AppointmentId = new SelectList(db.Appointments, "Id", "Id", photographer.AppointmentId);
             return View(photographer);
         }
 
@@ -108,7 +153,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Value,Name")] Photographer photographer)
+        public ActionResult Edit([Bind(Include = "Id,UserId,FirstName,LastName,Email,Address,City,State,Zipcode,PriceRange1,PriceRange2,PriceRange3,PriceRange4,AppointmentId")] Photographer photographer)
         {
             if (ModelState.IsValid)
             {

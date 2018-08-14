@@ -165,11 +165,11 @@ namespace Capstone.Controllers
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRole);
                     if (model.UserRole == "Photographer")
                     {
-                        return RedirectToAction("Create", "Photographer");
+                        return RedirectToAction("Create", "Photographers");
                     }
                     else if (model.UserRole == "Client")
                     {
-                        return RedirectToAction("Create", "Client");
+                        return RedirectToAction("Create", "Clients");
                     }
 
                     return RedirectToAction("Index", "Home");

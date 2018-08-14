@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201808131653391_second.Designer.cs">
       <DependentUpon>201808131653391_second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808131835430_third.cs" />
+    <Compile Include="Migrations\201808131835430_third.Designer.cs">
+      <DependentUpon>201808131835430_third.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -280,11 +284,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Photographers\FilteredPhotographers.cshtml" />
+    <Content Include="Views\Photographers\Index.cshtml" />
+    <Content Include="Views\Photographers\Details.cshtml" />
+    <Content Include="Views\Photographers\Create.cshtml" />
+    <Content Include="Views\Photographers\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Photographers\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Clients\" />
-    <Folder Include="Views\Photographers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -305,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808131653391_second.resx">
       <DependentUpon>201808131653391_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808131835430_third.resx">
+      <DependentUpon>201808131835430_third.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
