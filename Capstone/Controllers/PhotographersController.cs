@@ -62,12 +62,13 @@ namespace Capstone.Controllers
         
             foreach (var p in photographerList)
             {
-                string photographerAddress = p.Address + "," + p.City + "," + p.State + "," + p.Zipcode.ToString();
+                string photographerAddress = p.Address + " " + p.City + " " + p.State + " " + p.Zipcode.ToString();
                 photoList.Add(photographerAddress);
 
             }
 
             photoList.ToArray();
+            ViewBag.PhotoList = photoList;
             
 
             return View(photographerList.ToList());

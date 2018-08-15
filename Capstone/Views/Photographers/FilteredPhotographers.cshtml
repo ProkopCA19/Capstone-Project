@@ -16,13 +16,13 @@
 {
     <h3>Choose your price range</h3>
 
-    @Html.RadioButton("searchBy", "true")<text>Price Tier 1:$50-100 </text><b><input type="submit" value="Search"/></b>
+    @Html.RadioButton("searchBy", "true")<text>Price Tier 1:$50-100 </text><b><input type="submit" value="Search" /></b>
     <br />
     @Html.RadioButton("searchBy2", "true")<text>Price Tier 2:$100-200 </text><b><input type="submit" value="Search" /> </b>
     <br />
-    @Html.RadioButton("searchBy3", "true")<text>Price Tier 3:$200-300 </text><b><input type="submit" value="Search"/></b>
+    @Html.RadioButton("searchBy3", "true")<text>Price Tier 3:$200-300 </text><b><input type="submit" value="Search" /></b>
     <br />
-    @Html.RadioButton("searchBy4", "true")<text>Price Tier 4:$300+ </text><b><input type="submit" value="Search"/></b>
+    @Html.RadioButton("searchBy4", "true")<text>Price Tier 4:$300+ </text><b><input type="submit" value="Search" /></b>
     <br />
 
 }
@@ -127,7 +127,7 @@
        * element that contains the map. */
     #map {
         height: 600px;
-        width:100%;
+        width: 100%;
     }
     /* Optional: Makes the sample page fill the window. */
     html, body {
@@ -137,22 +137,124 @@
     }
 </style>
 
+            
+
 <div class="row">
 
     <div id="map"></div>
     <script>
-      var map;
+
+
+
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: { lat: -34.397, lng: 150.644 }
+            });
+            var geocoder = new google.maps.Geocoder();
+            debugger;
+            //document.getElementById('submit').addEventListener('click', function () {
+                geocodeAddress(geocoder, map);
+            
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+  
+            for (var i = 0; i < @ViewBag.PhotoList.Count; i++) {
+                var address = "@ViewBag.Photolist[0]";
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status === 'OK') {
+                        resultsMap.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: resultsMap,
+                            position: results[0].geometry.location
+                        });
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @*function initMap() {
+
+            
+            var coords = someFunction();
+            
+            var map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: 43.034992, lng: -87.922501 },
                 zoom: 8
             });
 
-            var marker = new google.maps.Marker({
-                position: { lat: 43.034352, lng: -87.911736 },
-                map: map
-            }) 
+
+            for (i = 0; i <= coords.length; i++) {
+                var data = coords[i];
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng, /*data[0].geometry.location*/
+                    map: map,
+                    title: data.title
+                });
             }
+
+        }
+
+    
+
+
+        function someFunction(){
+            var coords = [];
+
+            for (var i = 0; i < @ViewBag.PhotoList.Count; i++) {
+                var currAddress = "@ViewBag.PhotoList[1]";
+                debugger;
+                var geocoder = new google.maps.Geocoder(); 
+                    geocoder.geocode({ 'address': currAddress }), function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            coords.push(results[0].geometry.location);
+                        }
+                        else{
+                            throw ('No results found: ' + status);
+                        }
+                    }
+               
+            }
+            return coords;
+        }*@
+
+      
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAefKR3EiaTkne1xTFji0b_NK_tFFrRZfM&callback=initMap"
             async defer></script>
