@@ -152,16 +152,20 @@
                 center: { lat: -34.397, lng: 150.644 }
             });
             var geocoder = new google.maps.Geocoder();
-            debugger;
             //document.getElementById('submit').addEventListener('click', function () {
                 geocodeAddress(geocoder, map);
             
         }
 
         function geocodeAddress(geocoder, resultsMap) {
-  
-            for (var i = 0; i < @ViewBag.PhotoList.Count; i++) {
-                var address = "@ViewBag.Photolist[0]";
+
+ 
+         
+            var array = @Html.Raw(Json.Encode(ViewBag.PhotoList));
+         
+            
+            for (var i = 0; i < array.length; i++) {
+                var address = array[i];
                 geocoder.geocode({ 'address': address }, function (results, status) {
                     if (status === 'OK') {
                         resultsMap.setCenter(results[0].geometry.location);
@@ -172,7 +176,10 @@
                     } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
+
                 });
+
+      
             }
         }
 

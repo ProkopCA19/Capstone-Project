@@ -28,11 +28,13 @@ namespace Capstone.Controllers
 
             var photographerList = from s in db.Photographers
                                select s;
-         
+            List<string> photoList = new List<string>();
 
             if (searchBy == true)
             {
                 photographerList = db.Photographers.Where(p => p.PriceRange1 == searchBy);
+
+
                 
             }
             else if (searchBy2 == true )
@@ -54,11 +56,22 @@ namespace Capstone.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 photographerList = photographerList.Where(s => s.Zipcode.ToString().Contains(searchString));
+
+                foreach (var p in photographerList)
+                {
+                    string photographerAddress = p.Address + " " + p.City + " " + p.State + " " + p.Zipcode.ToString();
+                    photoList.Add(photographerAddress);
+
+                }
+
+                photoList.ToArray();
+                ViewBag.PhotoList = photoList;
+
                 return View(photographerList);
             }
 
 
-            List<string> photoList = new List<string>();
+            
         
             foreach (var p in photographerList)
             {
