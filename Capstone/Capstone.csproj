@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhotographersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -215,11 +216,16 @@
     <Compile Include="Migrations\201808131835430_third.Designer.cs">
       <DependentUpon>201808131835430_third.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808152049356_fourth.cs" />
+    <Compile Include="Migrations\201808152049356_fourth.Designer.cs">
+      <DependentUpon>201808152049356_fourth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Photographer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -298,6 +304,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -321,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808131835430_third.resx">
       <DependentUpon>201808131835430_third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808152049356_fourth.resx">
+      <DependentUpon>201808152049356_fourth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -33,6 +33,9 @@ namespace Capstone.Models
 
 
 
+        [ForeignKey("Image")]
+        public int? ImageId { get; set; }
+        public Image Image { get; set; }
 
 
         [ForeignKey("Appointment")]
