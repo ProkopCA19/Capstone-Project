@@ -266,9 +266,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\butterfly.jpg" />
     <Content Include="Images\f1image.jpg" />
     <Content Include="Images\f3pic.jpg" />
+    <Content Include="Images\purpleFlower.jpg" />
     <Content Include="Images\redflower.jpeg" />
+    <Content Include="Images\rose.jpg" />
     <Content Include="Images\wolverine.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -331,7 +334,8 @@
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Delete.cshtml" />
     <Content Include="Views\Photographers\Delete.cshtml" />
-    <Content Include="Views\Photos\Index.cshtml" />
+    <Content Include="Views\Photos\Create.cshtml" />
+    <Content Include="Views\Photos\ShowGallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -419,8 +423,14 @@
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+<Target Name="BeforeBuild">
+    <ItemGroup>
+      <Content Include="Images\**\*.ext" />
+    </ItemGroup>
   </Target>
+   <ItemGroup>
+    <Content Include="images\**" />
+  </ItemGroup>
   <Target Name="AfterBuild">
   </Target> -->
 </Project>

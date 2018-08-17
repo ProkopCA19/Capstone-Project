@@ -1,0 +1,29 @@
+﻿
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<center>
+    <h2>Gallery</h2>
+    <br />
+    <br />
+    <br />
+
+    @using (Html.BeginForm("Create", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            @Html.TextBox("file", "", new { type = "file" })
+            <input type="submit" value="submit" />
+            @ViewBag.Message
+        </div>
+    }
+
+
+
+
+
+
+
+
+</center>
