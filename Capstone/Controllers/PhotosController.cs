@@ -35,6 +35,8 @@ namespace Capstone.Controllers
 
 
                     photo.Title = Path.GetFileName(file.FileName);
+
+                    //photo.PhotoPath = "~/Images/" + photo.Title;  
                   
                     photo.PhotoPath = Path.Combine(Server.MapPath("~/Images"), photo.Title);
                     

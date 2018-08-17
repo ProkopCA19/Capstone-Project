@@ -106,7 +106,16 @@
             @Html.DisplayFor(model => model.AppointmentId)
         </dd>
 
-       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(model => model.Bio, 10, 60, new { htmlAttributes = new { @class = "form-control" } })
+        </dd>
+
+
     </dl>
 </div>
 <p>

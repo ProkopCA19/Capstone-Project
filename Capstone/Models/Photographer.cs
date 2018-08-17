@@ -29,6 +29,7 @@ namespace Capstone.Models
         public bool PriceRange3 { get; set; }
         [Display(Name = "Price Tier 4: $300+")]
         public bool PriceRange4 { get; set; }
+        public string Bio { get; set; }
 
 
 
