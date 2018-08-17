@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+    <h2>Gallery</h2>
+    @using(Html.BeginForm("Index", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            @Html.TextBox("file", "", new {type = "file"})
+            <input type="submit" value="submit" />
+            @ViewBag.Message
+        </div>
+    }
+
+
+        
+
+
+
+
+
+</center>
+

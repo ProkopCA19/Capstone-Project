@@ -36,7 +36,7 @@ namespace Capstone.Models
         public DbSet<Photographer> Photographers { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
-        public DbSet<Image> Images { get; set; }
+        public DbSet<Photo> Photos { get; set; }
        
 
 
