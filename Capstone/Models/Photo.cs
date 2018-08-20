@@ -13,6 +13,7 @@ namespace Capstone.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string PhotoPath { get; set; }
+        public string PhotoURLPath { get; set; }
 
         [ForeignKey("Photographer")]
         public int? PhotographerId { get; set; }

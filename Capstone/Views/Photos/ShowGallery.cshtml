@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Capstone.Models.Photo>
+﻿
+
+
+
+@model IEnumerable<Capstone.Models.Photo>
 
 @{
     ViewBag.Title = "ShowGallery";
@@ -7,9 +11,21 @@
 <h2>ShowGallery</h2>
 
 
-@foreach (var photo in Model)
-{
-    <img src="@photo.PhotoPath" />
-    
-}
+
+
+    <div class="container">
+        <div class="lightboxgallery-gallery clearfix">
+            @foreach (var photo in Model)
+            {
+                <a class="lightboxgallery-gallery-item" target="_blank" href="@photo.PhotoURLPath" data-title="Chelsea" data-alt="Jason" data-desc="We can edit this as well">
+                    <div>
+                        <img src="@photo.PhotoURLPath" title="@photo.Title" alt="@photo.Title">
+                        <div class="lightboxgallery-gallery-item-content">
+                            <span class="lightboxgallery-gallery-item-title">@photo.Title</span>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
 

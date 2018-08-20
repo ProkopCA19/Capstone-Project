@@ -7,6 +7,12 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link rel="stylesheet" href="~/Content/lightboxgallery-min.css">
+    <link rel="stylesheet" href="~/Content/lightboxgallery-style.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,7 +30,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Find A Photographer!", "FilteredPhotographers", "Photographers")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Upload Photos","Create", "Photos")</li>
+                    <li>@Html.ActionLink("Upload Photos", "Create", "Photos")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -38,8 +44,29 @@
         </footer>
     </div>
 
+
+
+
+
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="~/lightboxgallery-min.js"></script>
+    <script type="text/javascript">
+          jQuery(function($) {
+            $(document).on('click', '.lightboxgallery-gallery-item', function(event) {
+              event.preventDefault();
+              $(this).lightboxgallery({
+                showCounter: true,
+                showTitle: true,
+                showDescription: true
+              });
+            });
+          });
+    </script>
 </body>
 </html>
