@@ -37,7 +37,7 @@ namespace Capstone.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Photo> Photos { get; set; }
- 
+        public DbSet<Event> Events { get; set; }
         public DbSet<Stripe> StripeAPI { get; set; }
 
     }

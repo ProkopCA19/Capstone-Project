@@ -9,13 +9,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
+using Microsoft.AspNet.Identity;
 
 namespace Capstone.Controllers
 {
     public class BasicSchedulerController : Controller
     {
 
-        private SchedulerContext db = new SchedulerContext();
+      
+        ApplicationDbContext db = new ApplicationDbContext();
         // GET: BasicScheduler
         public ActionResult Index()
         {
@@ -30,17 +32,23 @@ namespace Capstone.Controllers
         }
 
         
-        public ActionResult Data()
+        public ActionResult Data(int? Id)
         {
-            var appointment = db.Events.ToList();
+            var photographer = db.Photographers.Where(p => p.Id == 1).FirstOrDefault();
+            var appointment = db.Events.Where(e=>e.PhotographerId == photographer.Id).ToList();
+
             return new SchedulerAjaxData(appointment);
 
         }
 
-   
+        [Authorize(Roles ="Photographer")]
         public ActionResult Save( int? id, FormCollection actionValues)
         {
             var action = new DataAction(actionValues);
+
+            var userId = User.Identity.GetUserId();
+            var photographer = db.Photographers.Where(p => p.UserId == userId).FirstOrDefault();
+
 
             try
             {
@@ -48,6 +56,7 @@ namespace Capstone.Controllers
                 switch (action.Type)
                 {
                     case DataActionTypes.Insert:
+                        changedEvent.PhotographerId = photographer.Id;
                         db.Events.Add(changedEvent);
                         break;
                     case DataActionTypes.Delete:

@@ -21,5 +21,8 @@ namespace Capstone.Models
         [DHXJson(Alias = "end_date")]
         public DateTime EndDate { get; set; }
 
+        [ForeignKey("Photographer")]
+        public int? PhotographerId { get; set; }
+        public Photographer Photographer { get; set; }
     }
 }
