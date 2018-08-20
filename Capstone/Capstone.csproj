@@ -265,14 +265,20 @@
     <Compile Include="Migrations\201808201436206_fourteen.Designer.cs">
       <DependentUpon>201808201436206_fourteen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808201454048_fifteen.cs" />
+    <Compile Include="Migrations\201808201454048_fifteen.Designer.cs">
+      <DependentUpon>201808201454048_fifteen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Photographer.cs" />
+    <Compile Include="Models\SchedulerContext.cs" />
     <Compile Include="Models\Stripe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -647,6 +653,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808201436206_fourteen.resx">
       <DependentUpon>201808201436206_fourteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808201454048_fifteen.resx">
+      <DependentUpon>201808201454048_fifteen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
