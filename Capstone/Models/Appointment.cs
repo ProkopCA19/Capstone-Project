@@ -10,8 +10,9 @@ namespace Capstone.Models
     {
         [Key]
         public int Id { get; set; }
-
-        public DateTime Date { get; set; }
+        public string text { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
 
     }
