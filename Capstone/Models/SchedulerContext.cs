@@ -8,7 +8,7 @@ namespace Capstone.Models
 {
     public partial class SchedulerContext: DbContext
     {
-        public SchedulerContext() : base("name=SchedulerContext") { }
+        public SchedulerContext() : base("DefaultConnection") { }
         public virtual DbSet<Event> Events { get; set; }
 
     }

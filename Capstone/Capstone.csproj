@@ -201,6 +201,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasicSchedulerController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -268,6 +269,10 @@
     <Compile Include="Migrations\201808201454048_fifteen.cs" />
     <Compile Include="Migrations\201808201454048_fifteen.Designer.cs">
       <DependentUpon>201808201454048_fifteen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808201536192_sixteen.cs" />
+    <Compile Include="Migrations\201808201536192_sixteen.Designer.cs">
+      <DependentUpon>201808201536192_sixteen.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -593,6 +598,7 @@
     <Content Include="Views\Photographers\Delete.cshtml" />
     <Content Include="Views\Photos\Create.cshtml" />
     <Content Include="Views\Photos\ShowGallery.cshtml" />
+    <Content Include="Views\BasicScheduler\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -656,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808201454048_fifteen.resx">
       <DependentUpon>201808201454048_fifteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808201536192_sixteen.resx">
+      <DependentUpon>201808201536192_sixteen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
