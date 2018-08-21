@@ -18,11 +18,33 @@ namespace Capstone.Controllers
 
       
         ApplicationDbContext db = new ApplicationDbContext();
+        // GET: BasicScheduler
+        //public ActionResult Index(int?id)
+        //{
 
+        //    var sched = new DHXScheduler(this);
+        //    sched.Skin = DHXScheduler.Skins.Flat;
+
+        //    sched.Data.Loader.AddParameter("photographerId", id);
+
+
+        //    sched.LoadData = true;
+        //    sched.EnableDataprocessor = true;
+        //    sched.InitialDate = DateTime.Now;
+
+        //    sched.TimeSpans.Add(new DHXBlockTime()
+        //    {
+        //        StartDate = new DateTime(2018, 1, 1),
+        //        EndDate = new DateTime(2018, 8, 24)
+        //    });
+
+        //    return View(sched);
+
+        //}
 
         public ActionResult Index(int? id)
         {
-
+            
             var sched = new DHXScheduler(this);
             sched.Skin = DHXScheduler.Skins.Flat;
             sched.EnableDynamicLoading(SchedulerDataLoader.DynamicalLoadingMode.Month);
@@ -30,10 +52,17 @@ namespace Capstone.Controllers
             if (id != null)
             {
                 sched.Data.Loader.AddParameter("photographerId", id);
-
+                sched.Data.DataProcessor.AddParameter("photographerId", id);
             }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                var thisPhotographer = db.Photographers.Where(p => p.UserId == userId).FirstOrDefault();
 
-            sched.Data.DataProcessor.AddParameter("photographerId", id);
+                sched.Data.Loader.AddParameter("photographerId", thisPhotographer.Id);
+                sched.Data.DataProcessor.AddParameter("photographerId", thisPhotographer.Id);
+            }
+            
 
             sched.LoadData = true;
             sched.EnableDataprocessor = true;
@@ -41,11 +70,35 @@ namespace Capstone.Controllers
 
             sched.InitialDate = DateTime.Now;
 
+
             sched.TimeSpans.Add(new DHXBlockTime()
             {
                 StartDate = new DateTime(2018, 1, 1),
-                EndDate = new DateTime(2018, 8, 24)
+                EndDate = new DateTime(2018, 8, 24),
+
             });
+
+
+            sched.TimeSpans.Add(new DHXBlockTime()
+            {
+                Day = DayOfWeek.Saturday,
+                Zones = new List<Zone>() { new Zone { Start = 0, End = 16 * 60 }, new Zone { Start = 18 * 60, End = 24 * 60 }}
+
+            });
+
+            sched.TimeSpans.Add(new DHXBlockTime()
+            {
+                Day = DayOfWeek.Friday,
+                Zones = new List<Zone>() { new Zone { Start = 0, End = 17 * 60 }, new Zone { Start = 19 * 60, End = 24 * 60 } },
+            });
+
+            sched.TimeSpans.Add(new DHXBlockTime()
+            {
+                Day = DayOfWeek.Sunday,
+                Zones = new List<Zone>() { new Zone { Start = 0, End = 8 * 60 }, new Zone { Start = 10 * 60, End = 13 * 60 }, new Zone { Start = 15 * 60, End = 24 * 60 } },
+            });
+
+
 
             return View(sched);
 
@@ -80,7 +133,7 @@ namespace Capstone.Controllers
         }
 
 
-        
+      
         public ActionResult Save(int photographerId, FormCollection actionValues)
         {
             var action = new DataAction(actionValues);

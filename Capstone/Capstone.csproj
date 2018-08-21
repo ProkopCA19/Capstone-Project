@@ -542,6 +542,7 @@
     <Content Include="Views\Photos\Create.cshtml" />
     <Content Include="Views\Photos\ShowGallery.cshtml" />
     <Content Include="Views\BasicScheduler\Index.cshtml" />
+    <Content Include="Views\Shared\PhotographerLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

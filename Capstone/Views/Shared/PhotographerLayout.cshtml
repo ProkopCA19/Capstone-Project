@@ -29,9 +29,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Find A Photographer!", "FilteredPhotographers", "Photographers")</li>
-                    
-                    
+                    <li>@Html.ActionLink("View Schedule", "Index", "BasicScheduler")</li>
+                    <li>@Html.ActionLink("Upload Photos", "Create", "Photos")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -71,3 +71,4 @@
     </script>
 </body>
 </html>
+
