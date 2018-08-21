@@ -18,36 +18,75 @@ namespace Capstone.Controllers
 
       
         ApplicationDbContext db = new ApplicationDbContext();
-        // GET: BasicScheduler
-        public ActionResult Index()
+
+
+        public ActionResult Index(int? id)
         {
 
             var sched = new DHXScheduler(this);
-            sched.Skin = DHXScheduler.Skins.Terrace;
+            sched.Skin = DHXScheduler.Skins.Flat;
+            sched.EnableDynamicLoading(SchedulerDataLoader.DynamicalLoadingMode.Month);
+
+            if (id != null)
+            {
+                sched.Data.Loader.AddParameter("photographerId", id);
+
+            }
+
+            sched.Data.DataProcessor.AddParameter("photographerId", id);
+
             sched.LoadData = true;
             sched.EnableDataprocessor = true;
-            sched.InitialDate = new DateTime(2016, 5, 5);
+
+
+            sched.InitialDate = DateTime.Now;
+
+            sched.TimeSpans.Add(new DHXBlockTime()
+            {
+                StartDate = new DateTime(2018, 1, 1),
+                EndDate = new DateTime(2018, 8, 24)
+            });
+
             return View(sched);
-          
+
         }
+
+        public ContentResult Data(int photographerId)
+        {
+
+            Console.WriteLine("CALL ME MAYBE!");
+
+            var userId = User.Identity.GetUserId();
+            var currentUser = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+
+            //var appointments = db.Events.Where(e => e.PhotographerId == 1);
+            //return new SchedulerAjaxData(appointments);
+
+            if (currentUser != null && currentUser.UserRole == "Photographer")
+            {
+                var thisPhotographer = db.Photographers.Where(p => p.UserId == userId).FirstOrDefault();
+                var thisAppointment = db.Events.Where(e => e.PhotographerId == thisPhotographer.Id).ToList();
+                return new SchedulerAjaxData(thisAppointment);
+            }
+            else
+            {
+                var appointments = db.Events.Where(e => e.PhotographerId == photographerId).ToList();
+
+                return new SchedulerAjaxData(appointments);
+            }
+
+
+
+        }
+
 
         
-        public ActionResult Data(int? Id)
-        {
-            var photographer = db.Photographers.Where(p => p.Id == 1).FirstOrDefault();
-            var appointment = db.Events.Where(e=>e.PhotographerId == photographer.Id).ToList();
-
-            return new SchedulerAjaxData(appointment);
-
-        }
-
-        [Authorize(Roles ="Photographer")]
-        public ActionResult Save( int? id, FormCollection actionValues)
+        public ActionResult Save(int photographerId, FormCollection actionValues)
         {
             var action = new DataAction(actionValues);
 
             var userId = User.Identity.GetUserId();
-            var photographer = db.Photographers.Where(p => p.UserId == userId).FirstOrDefault();
+            //var photographer = db.Photographers.Find(photographerId);
 
 
             try
@@ -56,7 +95,7 @@ namespace Capstone.Controllers
                 switch (action.Type)
                 {
                     case DataActionTypes.Insert:
-                        changedEvent.PhotographerId = photographer.Id;
+                        changedEvent.PhotographerId = photographerId;
                         db.Events.Add(changedEvent);
                         break;
                     case DataActionTypes.Delete:
@@ -77,7 +116,7 @@ namespace Capstone.Controllers
             return (new AjaxSaveResponse(action));
         }
 
-       
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -86,6 +125,9 @@ namespace Capstone.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
     }
 }
     

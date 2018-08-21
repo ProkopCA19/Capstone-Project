@@ -1,21 +1,23 @@
-﻿
+﻿@*@using DHTMLX.Scheduler;
+@model DHXScheduler;*@
 
-<br />
-<br />
+    <br />
 
-<!DOCTYPE html>
 
-    <title>DHXScheduler initialization sample</title>
+        <!DOCTYPE html>
+
+            <title>Book an appointment</title>
     <style>
         body {
             background-color: #eee;
-            padding-top:50px;
-            padding-bottom:20px;
+            padding-top: 100px;
+            padding-bottom: 200px;
         }
     </style>
 
-<body>
+    <body>
     <div style="height:500px;width:900px;margin:0 auto">
         @Html.Raw(Model.Render())
+
     </div>
-</body>
+    </body>
