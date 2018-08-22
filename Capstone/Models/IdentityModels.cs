@@ -39,6 +39,7 @@ namespace Capstone.Models
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Stripe> StripeAPI { get; set; }
+        public DbSet<Email> Email { get; set; }
 
     }
 }

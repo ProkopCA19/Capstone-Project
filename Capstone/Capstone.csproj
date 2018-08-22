@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BasicSchedulerController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhotographersController.cs" />
@@ -219,10 +220,19 @@
     <Compile Include="Migrations\201808202018082_second.Designer.cs">
       <DependentUpon>201808202018082_second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808221721100_third.cs" />
+    <Compile Include="Migrations\201808221721100_third.Designer.cs">
+      <DependentUpon>201808221721100_third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808221752253_fourth.cs" />
+    <Compile Include="Migrations\201808221752253_fourth.Designer.cs">
+      <DependentUpon>201808221752253_fourth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -548,6 +558,8 @@
     <Content Include="Views\Shared\PhotographerLayout.cshtml" />
     <Content Include="Views\Stripes\Charge.cshtml" />
     <Content Include="Views\Clients\Email.cshtml" />
+    <Content Include="Views\Emails\Contact.cshtml" />
+    <Content Include="Views\Emails\Sent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -572,6 +584,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808202018082_second.resx">
       <DependentUpon>201808202018082_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808221721100_third.resx">
+      <DependentUpon>201808221721100_third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808221752253_fourth.resx">
+      <DependentUpon>201808221752253_fourth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

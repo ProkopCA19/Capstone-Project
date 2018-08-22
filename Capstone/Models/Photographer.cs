@@ -31,6 +31,8 @@ namespace Capstone.Models
         public bool PriceRange4 { get; set; }
         public string Bio { get; set; }
 
+        public double? AccountBalance { get; set; }
+
 
 
         

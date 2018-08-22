@@ -24,5 +24,10 @@ namespace Capstone.Models
         [ForeignKey("Photographer")]
         public int? PhotographerId { get; set; }
         public Photographer Photographer { get; set; }
+
+        [ForeignKey("Client")]
+        public int? ClientId { get; set; }
+        public Client Client { get; set; }
+
     }
 }
