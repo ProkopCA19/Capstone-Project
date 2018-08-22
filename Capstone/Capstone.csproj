@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhotographersController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\StripesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +237,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Journal.css" />
     <Content Include="Content\lightboxgallery-min.css" />
     <Content Include="Content\lightboxgallery-style.css" />
     <Content Include="Content\lightboxgallery.css" />
@@ -484,6 +486,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.textbox-hinter.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -543,6 +546,8 @@
     <Content Include="Views\Photos\ShowGallery.cshtml" />
     <Content Include="Views\BasicScheduler\Index.cshtml" />
     <Content Include="Views\Shared\PhotographerLayout.cshtml" />
+    <Content Include="Views\Stripes\Charge.cshtml" />
+    <Content Include="Views\Clients\Email.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

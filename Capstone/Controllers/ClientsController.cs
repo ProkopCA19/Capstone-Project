@@ -117,7 +117,10 @@ namespace Capstone.Controllers
         }
 
 
-        
+        public ActionResult Email()
+        {
+            return View();
+        }
 
 
         protected override void Dispose(bool disposing)
