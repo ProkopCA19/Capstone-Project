@@ -561,6 +561,7 @@
     <Content Include="Views\Clients\Email.cshtml" />
     <Content Include="Views\Emails\Contact.cshtml" />
     <Content Include="Views\Emails\Sent.cshtml" />
+    <Content Include="Views\Clients\PhotographersClientList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

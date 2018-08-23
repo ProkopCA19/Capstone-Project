@@ -59,16 +59,25 @@ namespace Capstone.Controllers
 
             }
 
-        public ActionResult ShowGallery()
+        public ActionResult ShowGallery(int?id)
         {
-            var currentUserId = User.Identity.GetUserId();
+            if(id == null)
+            {
+                var currentUserId = User.Identity.GetUserId();
 
-            var thisPhotographer = db.Photographers.Where(p => p.UserId == currentUserId).FirstOrDefault();
+                var thisPhotographer = db.Photographers.Where(p => p.UserId == currentUserId).FirstOrDefault();
 
-            var thesePhotos = db.Photos.Where(i => i.PhotographerId == thisPhotographer.Id);
+                var thesePhotos = db.Photos.Where(i => i.PhotographerId == thisPhotographer.Id);
 
-            return View(thesePhotos);
+                return View(thesePhotos);
 
+            }
+            else
+            {
+                var thesePhotos = db.Photos.Where(p => p.PhotographerId == id);
+                return View(thesePhotos);
+            }
+         
         }
 
 

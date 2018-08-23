@@ -139,7 +139,7 @@ namespace Capstone.Controllers
             var action = new DataAction(actionValues);
 
             var userId = User.Identity.GetUserId();
-            //var photographer = db.Photographers.Find(photographerId);
+            var client = db.Clients.Where(c => c.UserId == userId).FirstOrDefault();
 
 
             try
@@ -149,6 +149,7 @@ namespace Capstone.Controllers
                 {
                     case DataActionTypes.Insert:
                         changedEvent.PhotographerId = photographerId;
+                        changedEvent.ClientId = client.Id;
                         db.Events.Add(changedEvent);
                         break;
                     case DataActionTypes.Delete:

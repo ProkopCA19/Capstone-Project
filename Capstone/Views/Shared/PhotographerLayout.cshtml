@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/Content/lightboxgallery-min.css">
     <link rel="stylesheet" href="~/Content/lightboxgallery-style.css">
 
+
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
@@ -31,6 +32,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("View Schedule", "Index", "BasicScheduler")</li>
                     <li>@Html.ActionLink("Upload Photos", "Create", "Photos")</li>
+                    <li>@Html.ActionLink("My Gallery", "ShowGallery", "Photos")</li>
 
                 </ul>
                 @Html.Partial("_LoginPartial")

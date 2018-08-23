@@ -131,5 +131,18 @@ namespace Capstone.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult PhotographersClientList()
+        {
+            var userId = User.Identity.GetUserId();
+            var thisPhotographer = db.Photographers.Where(p => p.UserId == userId).FirstOrDefault();
+            var myEvents = db.Events.Include(inc=> inc.Client).Where(e => e.PhotographerId == thisPhotographer.Id).Select(m=>m.Client).ToList();
+            
+            return View(myEvents);
+
+        }
+        
+
     }
 }
