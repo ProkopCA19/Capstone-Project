@@ -42,6 +42,8 @@
 
 <br />
 <br />
+
+
 <table class="table">
 
     <tr>
@@ -64,16 +66,16 @@
             @Html.DisplayNameFor(model => model.Zipcode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PriceRange1)
+            @Html.DisplayNameFor(model => model.PriceRange1==true)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PriceRange2)
+            @Html.DisplayNameFor(model => model.PriceRange2==true)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PriceRange3)
+            @Html.DisplayNameFor(model => model.PriceRange3==true)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PriceRange4)
+            @Html.DisplayNameFor(model => model.PriceRange4==true)
         </th>
 
         <th></th>
@@ -81,45 +83,337 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zipcode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceRange1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceRange2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceRange3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceRange4)
-        </td>
-        <td>
-            @Html.ActionLink("View Openings!", "Index", "BasicScheduler", new { id = item.Id }, null) 
-        </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zipcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceRange1==true)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceRange2==true)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceRange3==true)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceRange4==true)
+            </td>
+            <td>
+                @Html.ActionLink("View Openings!", "Index", "BasicScheduler", new { id = item.Id }, null)
+            </td>
 
-    </tr>
+        </tr>
     }
 
 </table>
+
+
+
+
+@*<table class="table">
+
+    @{
+
+        if (Model.All(m => m.PriceRange1 == true))
+        {
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zipcode)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PriceRange1)
+                </th>
+
+                <th></th>
+            </tr>
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zipcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PriceRange1)
+                    </td>
+                    <td>
+                        @Html.ActionLink("View Openings!", "Index", "BasicScheduler", new { id = item.Id }, null)|
+                        @Html.ActionLink("View Profile", "Details", new { id = item.Id }, null)
+                    </td>
+
+                </tr>
+            }
+
+        }
+        else if (Model.All(m => m.PriceRange2 == true))
+        {
+
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zipcode)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PriceRange2)
+                </th>
+
+                <th></th>
+            </tr>
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zipcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PriceRange2)
+                    </td>
+                    <td>
+                        @Html.ActionLink("View Openings!", "Index", "BasicScheduler", new { id = item.Id }, null)|
+                        @Html.ActionLink("View Profile", "Details", new { id = item.Id }, null)
+                    </td>
+
+                </tr>
+            }
+
+
+
+
+
+        }
+        else if (Model.All(m => m.PriceRange3 == true))
+        {
+
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zipcode)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PriceRange3)
+                </th>
+
+                <th></th>
+            </tr>
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zipcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PriceRange3)
+                    </td>
+                    <td>
+                        @Html.ActionLink("View Openings!", "Index", "BasicScheduler", new { id = item.Id }, null)|
+                        @Html.ActionLink("View Profile", "Details", new { id = item.Id }, null)
+                    </td>
+
+                </tr>
+
+
+
+
+            }
+
+
+
+        }
+        else if (Model.All(m => m.PriceRange4 == true))
+        {
+
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zipcode)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PriceRange4)
+                </th>
+
+                <th></th>
+            </tr>
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zipcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PriceRange4)
+                    </td>
+                    <td>
+                        @Html.ActionLink("View Openings!", "Index", "BasicScheduler", new { id = item.Id }, null)|
+                        @Html.ActionLink("View Profile", "Details", new { id = item.Id }, null)
+                    </td>
+
+                </tr>
+
+
+
+
+
+                }
+
+
+
+            }
+
+        }
+
+    </table>*@
+
+
+
+
+
+    
+
+   
 
 <br />
 <br />
@@ -131,8 +425,8 @@
         height: 600px;
         width: 100%;
     }
-    /* Optional: Makes the sample page fill the window. */
-    html, body {
+            /* Optional: Makes the sample page fill the window. */
+            html, body {
         height: 100%;
         margin: 0;
         padding: 0;
@@ -149,33 +443,33 @@
 
 
         function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
+                var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 8,
                 center: { lat: -34.397, lng: 150.644 }
             });
             var geocoder = new google.maps.Geocoder();
             //document.getElementById('submit').addEventListener('click', function () {
-                geocodeAddress(geocoder, map);
+            geocodeAddress(geocoder, map);
             
         }
 
         function geocodeAddress(geocoder, resultsMap) {
 
- 
-         
-            var array = @Html.Raw(Json.Encode(ViewBag.PhotoList));
-         
-            
-            for (var i = 0; i < array.length; i++) {
-                var address = array[i];
-                geocoder.geocode({ 'address': address }, function (results, status) {
-                    if (status === 'OK') {
-                        resultsMap.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
+
+
+                var array = @Html.Raw(Json.Encode(ViewBag.PhotoList));
+
+
+                for (var i = 0; i < array.length; i++) {
+                    var address = array[i];
+                    geocoder.geocode({ 'address': address }, function (results, status) {
+                        if (status === 'OK') {
+                            resultsMap.setCenter(results[0].geometry.location);
+                            var marker = new google.maps.Marker({
                             map: resultsMap,
                             position: results[0].geometry.location
-                        });
-                    } else {
+                            });
+            } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
 

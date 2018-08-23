@@ -5,44 +5,43 @@
 
 
 <!DOCTYPE html>
-
-<title>Book an appointment</title>
-<style>
-    /*body {
+<h2 style="margin-top: 50px;">Book an appointment</h2>
+ 
+    <style>
+        /*body {
             background-color: #eee;
             padding-top: 100px;
             padding-bottom: 200px;
         }*/
-</style>
+    </style>
 
-<body>
-    <div style="height:500px;width:900px;margin:0">
-        @Html.Raw(Model.Render())
+    <body>
+        <div style="height:500px;width:900px;margin:0">
+            @Html.Raw(Model.Render())
 
+        </div>
+    </body>
+    <br />
+    <br />
+    <br />
+
+    <h5>Before your appointment is confirmed, you are required to pay a 50.00$ deposit to secure your appointment. After your session your deposit will be deducted from your remaining balance, for which you will be charged at that time</h5>
+
+
+    <div class="row">
+        <div class="container col-md-2 col-md-offset-5">
+            <h3 style="margin-top:20px;">Please pay your deposit</h3>
+            <form action="/Stripes/Charge" method="POST">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_3CglMZVFXBOix6IMcDX0ZxiO"
+                        data-amount="5000"
+                        data-name=""
+                        data-description="Deposit"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="auto"
+                        data-zip-code="true"
+                        data-currency="USD">
+                </script>
+            </form>
+        </div>
     </div>
-</body>
-<br />
-<br/>
-<br/>
-
-<h5>Before your appointment is confirmed, you are required to pay a 50.00$ deposit to secure your appointment. After your session your deposit will be deducted from your remaining balance, for which you will be charged at that time</h5>
-
-
-<div class="row">
-    <div class="container col-md-2 col-md-offset-5">
-        <h3 style="margin-top:20px;">Please pay your deposit</h3>
-        <form action="/Stripes/Charge" method="POST">
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-   
-                    data-key="pk_test_3CglMZVFXBOix6IMcDX0ZxiO"
-                    data-amount="5000"
-                    data-name=""
-                    data-description="Deposit"
-                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                    data-locale="auto"
-                    data-zip-code="true"
-                    data-currency="USD">
-            </script>
-        </form>
-    </div>
-</div>

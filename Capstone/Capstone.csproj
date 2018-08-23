@@ -504,6 +504,7 @@
     <Content Include="Scripts\lightboxgallery-min.js" />
     <Content Include="Scripts\lightboxgallery.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Images\blackandwhite.jpg" />
     <Content Include="Views\Images\blue.jpg" />
     <Content Include="Views\Images\cat.jpg" />
     <Content Include="Views\Images\rose.jpg" />
