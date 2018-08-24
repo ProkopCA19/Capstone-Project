@@ -151,7 +151,7 @@ namespace Capstone.Controllers
                     case DataActionTypes.Insert:
                         changedEvent.PhotographerId = photographerId;
                         changedEvent.ClientId = client.Id;
-                        thisPhotographer.AccountBalance += 50;
+                       
                         db.Events.Add(changedEvent);
                         break;
                     case DataActionTypes.Delete:

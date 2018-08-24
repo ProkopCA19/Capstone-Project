@@ -8,6 +8,7 @@
 @if (HttpContext.Current.User.IsInRole("Client"))
 {
     <h2 style="margin-top: 50px;">Book an appointment</h2>
+    <p>@*When you book your appointment, please add your name and a short description of the type of photos you would like to do (Ex: "Engagement Photos")*@</p>
 }
 
 @if (HttpContext.Current.User.IsInRole("Photographer"))

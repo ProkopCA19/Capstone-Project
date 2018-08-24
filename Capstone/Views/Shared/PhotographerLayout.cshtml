@@ -25,13 +25,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Account Information", "MyInformation", "Photographers", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Account Information", "Myinformation", "Photographers", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("View Schedule", "Index", "BasicScheduler")</li>
-                    <li>@Html.ActionLink("My appointments", "PhotographersClientList", "Clients")</li>
+                    <li>@Html.ActionLink("Manage Appointments", "PhotographersClientList", "Clients")</li>
                     <li>@Html.ActionLink("My Gallery", "ShowGallery", "Photos")</li>
                     @*<li>@Html.ActionLink("My Account Balance", "Balance", "Photographers")</li>*@
 
