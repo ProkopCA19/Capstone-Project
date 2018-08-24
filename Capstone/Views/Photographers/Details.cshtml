@@ -13,84 +13,45 @@
         @{
             if (Model.PriceRange1 == true)
             {
-
-                <div>
                     <h4>Photographer</h4>
                     <hr />
-                    <dl class="dl-horizontal">
-                        <dt>
-                            @Html.DisplayNameFor(model => model.FirstName)
-                        </dt>
+                    <div class="list-group">
+                     
+                        <div class="list-group-item active">
+                            <p>Photographer</p>
+                        </div>
+                        <div class="list-group-item">
+                            <center>@Html.DisplayFor(model => model.FirstName)</center> 
+                        </div>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.FirstName)
-                        </dd>
+                        <div class="list-group-item">
+                            <center>@Html.DisplayFor(model => model.LastName)</center>
+                        </div>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.LastName)
-                        </dt>
+                        <div class="list-group-item">
+                            <center>@Html.DisplayFor(model => model.Email)</center> 
+                        </div>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.LastName)
-                        </dd>
+                        <div class="list-group-item">
+                            <center>@Html.DisplayFor(model => model.Address)</center>
+                        </div>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Email)
-                        </dt>
+                        <div class="list-group-item">
+                            <center>@Html.DisplayFor(model => model.City)</center> 
+                        </div>
+                        <div class="list-group-item">
+                            <center>@Html.DisplayFor(model => model.State)</center>
+                        </div>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.Email)
-                        </dd>
+                        <div class="list-group-item">
+                            <center>@Html.DisplayFor(model => model.Zipcode)</center>
+                        </div>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Address)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Address)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.City)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.City)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.State)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.State)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Zipcode)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Zipcode)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.PriceRange1)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.PriceRange1)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Bio)
-                        </dt>
-
-                        <dd>
-                            @Html.TextAreaFor(model => model.Bio, 10, 40, new { htmlAttributes = new { @class = "form-control" } })
-                        </dd>
+                        <div class="list-group-item">
+                          <center>@Html.DisplayFor(model => model.Bio)</center>
+                        </div>
                         @Html.ActionLink("Back to List", "FilteredPhotographers", "Photographers")
-                    </dl>
+                    
                 </div>
                 <a href="@Url.Action("Contact","Emails")" class="btn btn-info">Send Email</a>
                 <a href="@Url.Action("ShowGallery","Photos", new { id = Model.Id }, null)" class="btn btn-info">View Gallery</a>
@@ -382,13 +343,24 @@
                     width: 80%;
                     height: 80%;
                 }
+            .checked {
+                color: orange;
+            }
 
         </style>
 
         <div class="box">
             <div>
+                <center>
                 <img src="~/Images/cameraIcon.png" style="width:100%" />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+                <span class="fa fa-star checked "></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                </center>
             </div>
         </div>
 
