@@ -197,7 +197,32 @@ namespace Capstone.Controllers
             base.Dispose(disposing);
         }
 
-       
+
+        public void UpdateAccountBalance()
+        {
+            var userId = User.Identity.GetUserId();
+            var thisPhotographer = db.Photographers.Where(p => p.UserId == userId).FirstOrDefault();
+            var clients = db.Events.Include(inc => inc.Client).Where(e => e.PhotographerId == thisPhotographer.Id).Select(m => m.Client);
+
+            foreach (var c in clients)
+            {
+                if (c.AppointmentStatus == true)
+                {
+                    thisPhotographer.AccountBalance += 50;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+
+        public ActionResult Myinformation()
+        {
+            var userId = User.Identity.GetUserId();
+            var thisPhotographer = db.Photographers.Where(p => p.UserId == userId);
+            return View(thisPhotographer);
+
+        }
+
 
     }
 }

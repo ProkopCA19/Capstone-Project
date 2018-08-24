@@ -92,7 +92,9 @@
                         @Html.ActionLink("Back to List", "FilteredPhotographers", "Photographers")
                     </dl>
                 </div>
- 
+                <a href="@Url.Action("Contact","Emails")" class="btn btn-info">Send Email</a>
+                <a href="@Url.Action("ShowGallery","Photos", new { id = Model.Id }, null)" class="btn btn-info">View Gallery</a>
+                <a href="@Url.Action("Index", "BasicScheduler", new { id = Model.Id }, null)" class="btn btn-info">Book A Session</a>
 
             }
             else if (Model.PriceRange2 == true)
@@ -176,7 +178,7 @@
                         @Html.ActionLink("Back to List", "FilteredPhotographers", "Photographers")
                     </dl>
                 </div>
-        
+
 
 
 
@@ -265,7 +267,7 @@
 
                 <p>
                     @Html.ActionLink("Back to List", "FilteredPhotographers", "Photographers")
-               
+
                 </p>
 
 
@@ -351,8 +353,6 @@
                         <dd>
                             @Html.TextAreaFor(model => model.Bio, 10, 40, new { htmlAttributes = new { @class = "form-control" } })
                         </dd>
-                        
-                        @Html.ActionLink("Back to List", "FilteredPhotographers","Photographers")
 
                     </dl>
                 </div>
@@ -388,8 +388,7 @@
         <div class="box">
             <div>
                 <img src="~/Images/cameraIcon.png" style="width:100%" />
-                <a href="@Url.Action("Contact","Emails")" class="btn btn-info">Send Email</a>
-                <a href="@Url.Action("ShowGallery","Photos", new { id = Model.Id }, null)" class="btn btn-info">View Gallery</a>
+
             </div>
         </div>
 

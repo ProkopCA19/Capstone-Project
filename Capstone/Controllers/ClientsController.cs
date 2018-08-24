@@ -46,7 +46,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,FirstName,LastName,Email,Address,City,State,Zipcode,PriceRange1,PriceRange2,PriceRange3,PriceRange4,AppointmentId")] Client client)
+        public ActionResult Create([Bind(Include = "Id,UserId,FirstName,LastName,Email,Address,City,State,Zipcode")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -79,16 +79,33 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId,FirstName,LastName,Email,Address,City,State,Zipcode,PriceRange1,PriceRange2,PriceRange3,PriceRange4,AppointmentId")] Client client)
+        public ActionResult Edit([Bind(Include = "Id,UserId,FirstName,LastName,Email,Address,City,State,Zipcode,AppointmentStatus")] Client client)
         {
+
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                if (User.IsInRole("Photographer"))
+                {
+                    var controller = DependencyResolver.Current.GetService<PhotographersController>();
+                    controller.ControllerContext = new ControllerContext(this.Request.RequestContext, controller);
+                    controller.UpdateAccountBalance();
+
+                    return RedirectToAction("PhotographersClientList");
+                }
+                return RedirectToAction("Index","Home");
             }
             return View(client);
         }
+
+
+       
+
+
+
 
         // GET: Coupons/Delete/5
         public ActionResult Delete(int? id)
@@ -142,7 +159,25 @@ namespace Capstone.Controllers
             return View(myEvents);
 
         }
-        
+
+        public ActionResult ClientInformation()
+        {
+            var userId = User.Identity.GetUserId();
+            var thisClient = db.Clients.Where(p => p.UserId == userId);
+            return View(thisClient);
+        }
+
+        public ActionResult MyAppointments()
+        {
+            var userId = User.Identity.GetUserId();
+            var thisClient = db.Clients.Where(p => p.UserId == userId).FirstOrDefault();
+            var myEvent = db.Events.Where(e => e.ClientId == thisClient.Id).FirstOrDefault();
+
+            DateTime eventDay = myEvent.StartDate;
+            return View(eventDay);
+
+        }
+
 
     }
 }

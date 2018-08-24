@@ -5,28 +5,37 @@
 
 
 <!DOCTYPE html>
-<h2 style="margin-top: 50px;">Book an appointment</h2>
- 
-    <style>
-        /*body {
+@if (HttpContext.Current.User.IsInRole("Client"))
+{
+    <h2 style="margin-top: 50px;">Book an appointment</h2>
+}
+
+@if (HttpContext.Current.User.IsInRole("Photographer"))
+{
+    <h2 style="margin-top: 50px;">My Appointments</h2>
+}
+
+<style>
+    /*body {
             background-color: #eee;
             padding-top: 100px;
             padding-bottom: 200px;
         }*/
-    </style>
+</style>
 
-    <body>
-        <div style="height:500px;width:900px;margin:0">
-            @Html.Raw(Model.Render())
+<body>
+    <div style="height:500px;width:900px;margin:0">
+        @Html.Raw(Model.Render())
 
-        </div>
-    </body>
-    <br />
-    <br />
-    <br />
+    </div>
+</body>
+<br />
+<br />
+<br />
+@if (HttpContext.Current.User.IsInRole("Client"))
+{
 
     <h5>Before your appointment is confirmed, you are required to pay a 50.00$ deposit to secure your appointment. After your session your deposit will be deducted from your remaining balance, for which you will be charged at that time</h5>
-
 
     <div class="row">
         <div class="container col-md-2 col-md-offset-5">
@@ -45,3 +54,11 @@
             </form>
         </div>
     </div>
+
+
+
+
+}
+
+
+

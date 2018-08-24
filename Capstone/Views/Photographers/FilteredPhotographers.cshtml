@@ -15,15 +15,16 @@
 @using (Html.BeginForm("FilteredPhotographers", "Photographers", FormMethod.Get))
 {
     <h3>Choose your price range</h3>
+    <br />
 
     @Html.RadioButton("searchBy", "true")<text>Price Tier 1:$50-100 </text><b><input type="submit" value="Search" /></b>
-    <br />
+  
     @Html.RadioButton("searchBy2", "true")<text>Price Tier 2:$100-200 </text><b><input type="submit" value="Search" /> </b>
-    <br />
+
     @Html.RadioButton("searchBy3", "true")<text>Price Tier 3:$200-300 </text><b><input type="submit" value="Search" /></b>
-    <br />
+
     @Html.RadioButton("searchBy4", "true")<text>Price Tier 4:$300+ </text><b><input type="submit" value="Search" /></b>
-    <br />
+ 
 
 }
 

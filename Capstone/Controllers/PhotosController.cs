@@ -48,7 +48,7 @@ namespace Capstone.Controllers
                     db.SaveChanges();
 
                     ViewBag.Message = "Uploaded file successfully saved!";
-                    return View();
+                    return RedirectToAction("ShowGallery");
 
                 }
                 catch

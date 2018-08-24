@@ -140,6 +140,7 @@ namespace Capstone.Controllers
 
             var userId = User.Identity.GetUserId();
             var client = db.Clients.Where(c => c.UserId == userId).FirstOrDefault();
+            var thisPhotographer = db.Photographers.Where(p => p.Id == photographerId).FirstOrDefault();
 
 
             try
@@ -150,6 +151,7 @@ namespace Capstone.Controllers
                     case DataActionTypes.Insert:
                         changedEvent.PhotographerId = photographerId;
                         changedEvent.ClientId = client.Id;
+                        thisPhotographer.AccountBalance += 50;
                         db.Events.Add(changedEvent);
                         break;
                     case DataActionTypes.Delete:

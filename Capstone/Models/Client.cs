@@ -20,6 +20,8 @@ namespace Capstone.Models
         public string City { get; set; }
         public string State { get; set; }
         public int Zipcode { get; set; }
+        [Display(Name ="Appointment Completed")]
+        public bool AppointmentStatus { get; set; }
 
 
 
